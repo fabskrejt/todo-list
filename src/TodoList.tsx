@@ -67,6 +67,7 @@ const TodoList = (props: TodoListPropsType) => {
     const errorMessage = error
         ? <div style={{color: 'red'}}>Title is required</div>
         : null
+
     return (
         <div className='todolist'>
             <h3>

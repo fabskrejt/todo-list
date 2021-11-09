@@ -46,27 +46,14 @@ function App() {
         ]
     })
 
-    /*
-    let tasks_1: Array<TaskType> = [
-        {id: v1(), title: 'HTML', isDone: true},
-        {id: v1(), title: 'CSS', isDone: true},
-        {id: v1(), title: 'React', isDone: false},
-        {id: v1(), title: 'JS', isDone: false},
-    ]
-    */
-
-    /*let [tasks, setTasks] = useState<Array<TaskType>>(tasks_1)*/
-    /*const [filter, setFilter] = useState<FilterValuesType>('all')*/
 
     const removeTask = (taskID: string, todoListID: string) => {
         tasks[todoListID] = tasks[todoListID].filter(t => t.id !== taskID)
-        /*setTasks(tasks = tasks.filter(t => t.id !== taskID))*/
         setTasks({...tasks})
 
     }
     const changeFilter = (filter: FilterValuesType, todoListID: string) => {
         setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, filter} : t))
-        /*   setFilter(filter)*/
     }
     const addTask = (title: string, todoListID: string) => {
         const newTask: TaskType = {
@@ -78,8 +65,6 @@ function App() {
     }
     const changeTaskStatus = (taskID: string, isDone: boolean, todoListID: string) => {
         setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskID ? {...t, isDone: isDone} : t)})
-        /*    const updateTasks = tasks.map(t => t.id === taskID ? {...t, isDone: isDone} : t)
-            setTasks(updateTasks)*/
     }
     const removeTodoList = (todoListID: string) => {
         setTodoLists(todoLists.filter(t => t.id !== todoListID))
@@ -90,10 +75,10 @@ function App() {
     const todoListsComponents = todoLists.map(t => {
         let tasksForRender: Array<TaskType> = tasks[t.id]
         if (t.filter === 'active') {
-            tasksForRender = tasks[t.id].filter(t => t.isDone === false)
+            tasksForRender = tasks[t.id].filter(t => !t.isDone )
         }
         if (t.filter === 'completed') {
-            tasksForRender = tasks[t.id].filter(t => t.isDone === true)
+            tasksForRender = tasks[t.id].filter(t => t.isDone)
         }
         return (
             <TodoList
