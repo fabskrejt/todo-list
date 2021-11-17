@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
+/*import {AddItemForm} from "./AddItemForm";*/
 
 type TodoListPropsType = {
     id: string
@@ -72,8 +73,9 @@ const TodoList = (props: TodoListPropsType) => {
         <div className='todolist'>
             <h3>
                 {props.title}
-                <button onClick={() => props.removeTodoList(props.id)}>x</button>
+                <button onClick={() => props.removeTodoList(props.id)}>-</button>
             </h3>
+         {/*   <AddItemForm className={error ? 'error' : ''} value={title}  onChange={changeTitle} onKeyPress={onKeyPressAddTask}/>*/}
             <div>
                 <input
                     className={error ? 'error' : ''}
