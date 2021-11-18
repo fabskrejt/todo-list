@@ -1,21 +1,50 @@
-/*
-import React from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 export type AddItemFormType = {
-    className: string
-    value: string
-    changeTitle:(value:string) => void
+    addItemCallback:(trimmedTitle:string) => void
 
 }
 
 export const AddItemForm=(props: AddItemFormType)=>{
-    const changeTitle = () =>{
-        props.changeTitle(value)
+    const [title, setTitle] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
+
+    const errorMessage = error
+        ? <div style={{color: 'red'}}>Title is required</div>
+        : null
+
+    const addTask = () => {
+        const trimmedTitle = title.trim()
+        if (trimmedTitle) {
+            props.addItemCallback(trimmedTitle)
+            setTitle('')
+        } else {
+            setError(true)
+        }
+        setTitle('')
     }
+    const changeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.currentTarget.value != ' ') {
+            setTitle(event.currentTarget.value)
+            setError(false)
+        } else {
+            setError(true)
+        }
+    }
+
+        const onKeyPressAddTask = (event: KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === 'Enter') {
+                addTask()
+            }
+        }
+
+/*        const changeTitle = () =>{
+        props.changeTitle(value)
+    }*/
     return(
         <div>
             <input
-                className={props.className}
-                value={props.value}
+                className={error ? 'error' : ''}
+                value={title}
                 placeholder={'enter task'}
                 onChange={changeTitle}
                 onKeyPress={onKeyPressAddTask}
@@ -24,5 +53,4 @@ export const AddItemForm=(props: AddItemFormType)=>{
             {errorMessage}
         </div>
     )
-}*/
-export {}
+}

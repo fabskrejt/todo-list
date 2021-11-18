@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
+import {AddItemForm} from "./AddItemForm";
 /*import {AddItemForm} from "./AddItemForm";*/
 
 type TodoListPropsType = {
@@ -42,22 +43,22 @@ const TodoList = (props: TodoListPropsType) => {
         } else {
             setError(true)
         }
-
     }
-    const onKeyPressAddTask = (event: KeyboardEvent<HTMLInputElement>) => {
+
+/*    const onKeyPressAddTask = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             addTask()
         }
-    }
-    const addTask = () => {
-        const trimmedTitle = title.trim()
-        if (trimmedTitle) {
+    }*/
+    const addTask = (trimmedTitle:string) => {
+/*        const trimmedTitle = title.trim()
+        if (trimmedTitle) {*/
             props.addTask(trimmedTitle, props.id)
-            setTitle('')
+/*            setTitle('')
         } else {
             setError(true)
         }
-        setTitle('')
+        setTitle('')*/
     }
     const changeFilterToAll = () => props.changeFilter('all', props.id)
     const changeFilterToActive = () => props.changeFilter('active', props.id)
@@ -75,8 +76,8 @@ const TodoList = (props: TodoListPropsType) => {
                 {props.title}
                 <button onClick={() => props.removeTodoList(props.id)}>-</button>
             </h3>
-         {/*   <AddItemForm className={error ? 'error' : ''} value={title}  onChange={changeTitle} onKeyPress={onKeyPressAddTask}/>*/}
-            <div>
+            <AddItemForm addItemCallback={addTask}/>
+{/*            <div>
                 <input
                     className={error ? 'error' : ''}
                     value={title}
@@ -86,7 +87,7 @@ const TodoList = (props: TodoListPropsType) => {
                 />
                 <button onClick={addTask}>+</button>
                 {errorMessage}
-            </div>
+            </di*/}
             <ul>
                 {todoListItem}
             </ul>
