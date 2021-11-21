@@ -1,6 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
 import {AddItemForm} from "./AddItemForm";
+import {EditableSpan} from "./EditableSpan";
 /*import {AddItemForm} from "./AddItemForm";*/
 
 type TodoListPropsType = {
@@ -26,7 +27,8 @@ const TodoList = (props: TodoListPropsType) => {
                     onChange={changeInputCheck}
                     type="checkbox"
                     checked={t.isDone}/>
-                <span>{t.title}</span>
+                <EditableSpan title={t.title}/>
+                {/*<span>{t.title}</span>*/}
                 <button onClick={() => props.removeTask(t.id, props.id)}> x</button>
             </li>
         )
