@@ -37,9 +37,6 @@ export const AddItemForm=(props: AddItemFormType)=>{
             }
         }
 
-/*        const changeTitle = () =>{
-        props.changeTitle(value)
-    }*/
     return(
         <div>
             <input

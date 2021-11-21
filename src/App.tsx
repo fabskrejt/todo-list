@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import TodoList from "./TodoList";
 import {v1} from "uuid";
+import {AddItemForm} from "./AddItemForm";
 
 export type TaskType = {
     id: string
@@ -66,10 +67,20 @@ function App() {
     const changeTaskStatus = (taskID: string, isDone: boolean, todoListID: string) => {
         setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskID ? {...t, isDone: isDone} : t)})
     }
+
+
     const removeTodoList = (todoListID: string) => {
         setTodoLists(todoLists.filter(t => t.id !== todoListID))
         delete tasks[todoListID]
     }
+
+    const addTodoList = (title:string) => {
+        const todoList: TodoListType = {id: v1(), title: title, filter: "all"}
+        setTodoLists([todoList, ...todoLists ])
+        setTasks({...tasks, [todoList.id]:[]})
+    }
+
+
 
 //UI
     const todoListsComponents = todoLists.map(t => {
@@ -107,6 +118,7 @@ function App() {
     return (
 
         <div className="App">
+            <AddItemForm addItemCallback={addTodoList}/>
             {todoListsComponents}
             {/* <TodoList changeTaskStatus={changeTaskStatus} filter={filter} title='What to learn' addTask={addTask}
                       tasks={tasksForRender} removeTask={removeTask}
