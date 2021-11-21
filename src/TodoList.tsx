@@ -16,9 +16,6 @@ type TodoListPropsType = {
 }
 
 const TodoList = (props: TodoListPropsType) => {
-    const [title, setTitle] = useState<string>('')
-    const [error, setError] = useState<boolean>(false)
-
     const todoListItem = props.tasks.map(t => {
         const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked, props.id)
         return (
@@ -36,29 +33,8 @@ const TodoList = (props: TodoListPropsType) => {
 
     })
 
-    const changeTitle = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.currentTarget.value != ' ') {
-            setTitle(event.currentTarget.value)
-            setError(false)
-        } else {
-            setError(true)
-        }
-    }
-
-/*    const onKeyPressAddTask = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            addTask()
-        }
-    }*/
-    const addTask = (trimmedTitle:string) => {
-/*        const trimmedTitle = title.trim()
-        if (trimmedTitle) {*/
-            props.addTask(trimmedTitle, props.id)
-/*            setTitle('')
-        } else {
-            setError(true)
-        }
-        setTitle('')*/
+    const addTask = (trimmedTitle: string) => {
+        props.addTask(trimmedTitle, props.id)
     }
     const changeFilterToAll = () => props.changeFilter('all', props.id)
     const changeFilterToActive = () => props.changeFilter('active', props.id)
@@ -66,9 +42,6 @@ const TodoList = (props: TodoListPropsType) => {
     const allButtonClass = props.filter === 'all' ? 'active-filter' : ''
     const activeButtonClass = props.filter === 'active' ? 'active-filter' : ''
     const completedButtonClass = props.filter === 'completed' ? 'active-filter' : ''
-    const errorMessage = error
-        ? <div style={{color: 'red'}}>Title is required</div>
-        : null
 
     return (
         <div className='todolist'>
@@ -77,17 +50,6 @@ const TodoList = (props: TodoListPropsType) => {
                 <button onClick={() => props.removeTodoList(props.id)}>-</button>
             </h3>
             <AddItemForm addItemCallback={addTask}/>
-{/*            <div>
-                <input
-                    className={error ? 'error' : ''}
-                    value={title}
-                    placeholder={'enter task'}
-                    onChange={changeTitle}
-                    onKeyPress={onKeyPressAddTask}
-                />
-                <button onClick={addTask}>+</button>
-                {errorMessage}
-            </di*/}
             <ul>
                 {todoListItem}
             </ul>

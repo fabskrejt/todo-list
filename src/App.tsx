@@ -56,6 +56,10 @@ function App() {
     const changeFilter = (filter: FilterValuesType, todoListID: string) => {
         setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, filter} : t))
     }
+    const changeTodoListTitle = (title:string, todoListID: string) => {
+        setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, title} : t))
+    }
+
     const addTask = (title: string, todoListID: string) => {
         const newTask: TaskType = {
             id: v1(),
@@ -68,25 +72,27 @@ function App() {
         setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskID ? {...t, isDone: isDone} : t)})
     }
 
+    const changeTaskTitle = (taskID: string, taskTitle: string, todoListID: string) => {
+        setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskID ? {...t, title: taskTitle} : t)})
+    }
 
     const removeTodoList = (todoListID: string) => {
         setTodoLists(todoLists.filter(t => t.id !== todoListID))
         delete tasks[todoListID]
     }
 
-    const addTodoList = (title:string) => {
+    const addTodoList = (title: string) => {
         const todoList: TodoListType = {id: v1(), title: title, filter: "all"}
-        setTodoLists([todoList, ...todoLists ])
-        setTasks({...tasks, [todoList.id]:[]})
+        setTodoLists([todoList, ...todoLists])
+        setTasks({...tasks, [todoList.id]: []})
     }
-
 
 
 //UI
     const todoListsComponents = todoLists.map(t => {
         let tasksForRender: Array<TaskType> = tasks[t.id]
         if (t.filter === 'active') {
-            tasksForRender = tasks[t.id].filter(t => !t.isDone )
+            tasksForRender = tasks[t.id].filter(t => !t.isDone)
         }
         if (t.filter === 'completed') {
             tasksForRender = tasks[t.id].filter(t => t.isDone)
