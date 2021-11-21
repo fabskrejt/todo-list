@@ -109,6 +109,8 @@ function App() {
                 removeTask={removeTask}
                 changeFilter={changeFilter}
                 removeTodoList={removeTodoList}
+                changeTaskTitle={changeTaskTitle}
+                changeTodoListTitle={changeTodoListTitle}
             />
         )
     })
