@@ -1,4 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import {Button} from "@material-ui/core";
 export type AddItemFormType = {
     addItemCallback:(trimmedTitle:string) => void
 
@@ -47,6 +48,7 @@ export const AddItemForm=(props: AddItemFormType)=>{
                 onKeyPress={onKeyPressAddTask}
             />
             <button onClick={addTask}>+</button>
+            <Button onClick={addTask} variant={"contained"}>+</Button>
             {errorMessage}
         </div>
     )
