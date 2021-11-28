@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup, IconButton} from "@material-ui/core";
+import {Button, ButtonGroup, IconButton, List, ListItem, Typography} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
 
 
@@ -28,16 +28,26 @@ const TodoList = (props: TodoListPropsType) => {
         }
 
         return (
-            <li
+            <ListItem
+                divider
+                alignItems={'center'}
+                dense
                 className={t.isDone ? 'is-done' : ''}
-                key={t.id}>
-                <input
-                    onChange={changeInputCheck}
-                    type="checkbox"
-                    checked={t.isDone}/>
-                <EditableSpan title={t.title} setNewTitle={setNewTaskTitle}/>
-                <button onClick={() => props.removeTask(t.id, props.id)}> x</button>
-            </li>
+                key={t.id}
+                style={{display: 'flex', justifyContent: 'space-between'}}
+            >
+                <div>
+                    <input
+                        onChange={changeInputCheck}
+                        type="checkbox"
+                        checked={t.isDone}/>
+                    <EditableSpan title={t.title} setNewTitle={setNewTaskTitle}/>
+                </div>
+                <IconButton onClick={() => props.removeTask(t.id, props.id)}>
+                    <Delete/>
+                </IconButton>
+                {/*              <button onClick={() => props.removeTask(t.id, props.id)}> x</button>*/}
+            </ListItem>
         )
     })
 
@@ -56,31 +66,31 @@ const TodoList = (props: TodoListPropsType) => {
 
     return (
         <div className='todolist'>
-            <h3>
+            <Typography variant={'h6'} style={{fontWeight: 'bold', color: 'rgb(57, 79, 79)'}}>
                 <EditableSpan title={props.title} setNewTitle={setNewTodolistTitle}/>
-                <IconButton  edge={'end'} size={'small'} onClick={() => props.removeTodoList(props.id)}>
+                <IconButton edge={'end'} size={'small'} onClick={() => props.removeTodoList(props.id)}>
                     <Delete/>
                 </IconButton>
                 {/*<button onClick={() => props.removeTodoList(props.id)}>-</button>*/}
-            </h3>
+            </Typography>
             <AddItemForm addItemCallback={addTask}/>
-            <ul>
+            <List>
                 {todoListItem}
-            </ul>
+            </List>
             <div>
-                <ButtonGroup variant={'contained'} size={'small'} fullWidth >
-                <Button
-                    className={allButtonClass}
-                    onClick={changeFilterToAll}>All
-                </Button>
-                <Button
-                    className={activeButtonClass}
-                    onClick={changeFilterToActive}>Active
-                </Button>
-                <Button
-                    className={completedButtonClass}
-                    onClick={changeFilterToCompleted}>Completed
-                </Button>
+                <ButtonGroup variant={'contained'} size={'small'} fullWidth>
+                    <Button
+                        className={allButtonClass}
+                        onClick={changeFilterToAll}>All
+                    </Button>
+                    <Button
+                        className={activeButtonClass}
+                        onClick={changeFilterToActive}>Active
+                    </Button>
+                    <Button
+                        className={completedButtonClass}
+                        onClick={changeFilterToCompleted}>Completed
+                    </Button>
                 </ButtonGroup>
             </div>
         </div>
