@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup, IconButton, List, ListItem, Typography} from "@material-ui/core";
+import {Button, ButtonGroup, Checkbox, IconButton, List, ListItem, Typography} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
 
 
@@ -37,10 +37,12 @@ const TodoList = (props: TodoListPropsType) => {
                 style={{display: 'flex', justifyContent: 'space-between'}}
             >
                 <div>
-                    <input
+                    <Checkbox
                         onChange={changeInputCheck}
-                        type="checkbox"
-                        checked={t.isDone}/>
+                        checked={t.isDone}
+                        color="default"
+
+                    />
                     <EditableSpan title={t.title} setNewTitle={setNewTaskTitle}/>
                 </div>
                 <IconButton onClick={() => props.removeTask(t.id, props.id)}>
@@ -68,10 +70,13 @@ const TodoList = (props: TodoListPropsType) => {
         <div className='todolist'>
             <Typography variant={'h6'} style={{fontWeight: 'bold', color: 'rgb(57, 79, 79)'}}>
                 <EditableSpan title={props.title} setNewTitle={setNewTodolistTitle}/>
-                <IconButton edge={'end'} size={'small'} onClick={() => props.removeTodoList(props.id)}>
+                <IconButton
+                    edge={'end'}
+                    size={'small'}
+                    onClick={() => props.removeTodoList(props.id)}
+                >
                     <Delete/>
                 </IconButton>
-                {/*<button onClick={() => props.removeTodoList(props.id)}>-</button>*/}
             </Typography>
             <AddItemForm addItemCallback={addTask}/>
             <List>
