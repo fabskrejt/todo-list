@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-import {Button} from "@material-ui/core";
+import {Button, IconButton} from "@material-ui/core";
+import {Add} from "@material-ui/icons";
 export type AddItemFormType = {
     addItemCallback:(trimmedTitle:string) => void
 
@@ -48,7 +49,10 @@ export const AddItemForm=(props: AddItemFormType)=>{
                 onKeyPress={onKeyPressAddTask}
             />
             {/*<button onClick={addTask}>+</button>*/}
-            <Button onClick={addTask} variant={"contained"} size={'small'}>+</Button>
+            <IconButton onClick={addTask} size={'small'}>
+                <Add/>
+            </IconButton>
+      {/*      <Button onClick={addTask} variant={"contained"} size={'small'}>+</Button>*/}
             {errorMessage}
         </div>
     )
