@@ -2,7 +2,8 @@ import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup} from "@material-ui/core";
+import {Button, ButtonGroup, IconButton} from "@material-ui/core";
+import {Delete} from "@material-ui/icons";
 
 
 type TodoListPropsType = {
@@ -57,14 +58,17 @@ const TodoList = (props: TodoListPropsType) => {
         <div className='todolist'>
             <h3>
                 <EditableSpan title={props.title} setNewTitle={setNewTodolistTitle}/>
-                <button onClick={() => props.removeTodoList(props.id)}>-</button>
+                <IconButton  edge={'end'} size={'small'} onClick={() => props.removeTodoList(props.id)}>
+                    <Delete/>
+                </IconButton>
+                {/*<button onClick={() => props.removeTodoList(props.id)}>-</button>*/}
             </h3>
             <AddItemForm addItemCallback={addTask}/>
             <ul>
                 {todoListItem}
             </ul>
             <div>
-                <ButtonGroup variant={'contained'} size={'small'}>
+                <ButtonGroup variant={'contained'} size={'small'} fullWidth >
                 <Button
                     className={allButtonClass}
                     onClick={changeFilterToAll}>All
