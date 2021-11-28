@@ -47,8 +47,8 @@ export const AddItemForm=(props: AddItemFormType)=>{
                 onChange={changeTitle}
                 onKeyPress={onKeyPressAddTask}
             />
-            <button onClick={addTask}>+</button>
-            <Button onClick={addTask} variant={"contained"}>+</Button>
+            {/*<button onClick={addTask}>+</button>*/}
+            <Button onClick={addTask} variant={"contained"} size={'small'}>+</Button>
             {errorMessage}
         </div>
     )

@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType, TaskType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
+import {Button, ButtonGroup} from "@material-ui/core";
 
 
 type TodoListPropsType = {
@@ -63,18 +64,20 @@ const TodoList = (props: TodoListPropsType) => {
                 {todoListItem}
             </ul>
             <div>
-                <button
+                <ButtonGroup variant={'contained'} size={'small'}>
+                <Button
                     className={allButtonClass}
                     onClick={changeFilterToAll}>All
-                </button>
-                <button
+                </Button>
+                <Button
                     className={activeButtonClass}
                     onClick={changeFilterToActive}>Active
-                </button>
-                <button
+                </Button>
+                <Button
                     className={completedButtonClass}
                     onClick={changeFilterToCompleted}>Completed
-                </button>
+                </Button>
+                </ButtonGroup>
             </div>
         </div>
     )
