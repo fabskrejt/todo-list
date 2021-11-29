@@ -1,4 +1,4 @@
-.App {
+/*.App {
     padding: 30px;
     display: flex;
 }
@@ -14,13 +14,15 @@
 
 .active-filter {
     background-color: aquamarine;
-}
+}*/
 
 .is-done {
     opacity: 0.5;
 }
+/*
 
 .error {
     border: 2px solid red;
     outline: none;
 }
+*/
