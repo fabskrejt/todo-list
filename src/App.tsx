@@ -12,7 +12,7 @@ export type TaskType = {
     isDone: boolean
 }
 
-type TodoListType = {
+export type TodoListType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -55,13 +55,6 @@ function App() {
         setTasks({...tasks})
 
     }
-    const changeFilter = (filter: FilterValuesType, todoListID: string) => {
-        setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, filter} : t))
-    }
-    const changeTodoListTitle = (title: string, todoListID: string) => {
-        setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, title} : t))
-    }
-
     const addTask = (title: string, todoListID: string) => {
         const newTask: TaskType = {
             id: v1(),
@@ -70,22 +63,26 @@ function App() {
         }
         setTasks({...tasks, [todoListID]: [newTask, ...tasks[todoListID]]})
     }
+    const changeTodoListTitle = (title: string, todoListID: string) => {
+        setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, title} : t))
+    }
     const changeTaskStatus = (taskID: string, isDone: boolean, todoListID: string) => {
         setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskID ? {...t, isDone: isDone} : t)})
     }
 
+    const changeFilter = (filter: FilterValuesType, todoListID: string) => {
+        setTodoLists(todoLists.map(t => t.id === todoListID ? {...t, filter} : t))
+    }
     const changeTaskTitle = (taskID: string, taskTitle: string, todoListID: string) => {
         setTasks({...tasks, [todoListID]: tasks[todoListID].map(t => t.id === taskID ? {...t, title: taskTitle} : t)})
     }
-
     const removeTodoList = (todoListID: string) => {
         setTodoLists(todoLists.filter(t => t.id !== todoListID))
         delete tasks[todoListID]
     }
-
     const addTodoList = (title: string) => {
         const todoList: TodoListType = {id: v1(), title: title, filter: "all"}
-        setTodoLists([todoList, ...todoLists])
+        setTodoLists([...todoLists, todoList ])
         setTasks({...tasks, [todoList.id]: []})
     }
 
