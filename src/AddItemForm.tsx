@@ -64,8 +64,6 @@ export const AddItemForm = (props: AddItemFormType) => {
             <IconButton onClick={addTask} size={'small'}>
                 <Add/>
             </IconButton>
-            {/*      <Button onClick={addTask} variant={"contained"} size={'small'}>+</Button>*/}
-            {/*{errorMessage}*/}
         </div>
     )
 }
