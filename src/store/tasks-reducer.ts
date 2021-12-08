@@ -8,31 +8,36 @@ type RemoveTaskActionType = {
     todoListID: string
 }
 
-export type secondTodolistAC = {
-    type: ''
+export type AddTaskActionType = {
+    type: 'ADD-TASK'
+    title: string
+    todoListID: string
 }
 
 
-export type ActionType = RemoveTaskActionType | secondTodolistAC
+export type ActionType = RemoveTaskActionType | AddTaskActionType
 
 export const tasksReducer = (state: TasksStateType, action: ActionType): TasksStateType => {
     switch (action.type) {
         case 'REMOVE-TASK':
-            return {...state, [action.todoListID]: state[action.todoListID].
-                filter(task => task.id !== action.taskID)}
-        case '':
-            return state
-          default:
+            return {
+                ...state, [action.todoListID]: state[action.todoListID]
+                    .filter(task => task.id !== action.taskID)
+            }
+        case 'ADD-TASK':
+            return {
+                ...state,
+                [action.todoListID]: [{id: v1(), title: action.title, isDone: false}, ...state[action.todoListID]]
+            }
+        default:
             return state
     }
 }
 
 export const removeTaskAC = (taskID: string, todoListID: string): RemoveTaskActionType => {
-    return {type: 'REMOVE-TASK', taskID, todoListID }
+    return {type: 'REMOVE-TASK', taskID, todoListID}
 }
 
-export const secondTodolistAC = (title: string, id: string): secondTodolistAC => {
-    return {
-        type: '',
-    }
+export const addTaskAC = (title: string, todoListID: string): AddTaskActionType => {
+    return {type: 'ADD-TASK', title, todoListID}
 }
