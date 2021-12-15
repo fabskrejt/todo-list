@@ -19,6 +19,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     }
     const changeTitle = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.currentTarget.value)
+
     }
 
     return (

@@ -13,7 +13,7 @@ export const AddItemForm = (props: AddItemFormType) => {
 
     const addTask = () => {
         const trimmedTitle = title.trim()
-        if (trimmedTitle) {
+        if (trimmedTitle && trimmedTitle !== '') {
             props.addItemCallback(trimmedTitle)
             setTitle('')
         } else {
@@ -39,6 +39,7 @@ export const AddItemForm = (props: AddItemFormType) => {
     return (
         <div>
             <TextField
+                value={title}
                 size={'small'}
                 variant={'outlined'}
                 onChange={changeTitle}
