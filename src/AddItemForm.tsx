@@ -11,12 +11,6 @@ export const AddItemForm = (props: AddItemFormType) => {
     const [title, setTitle] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
 
-/*    const errorMessage = error
-        ? <div style={{color: 'red'}}>Title is required</div>
-        : null*/
-    /*const errorMessage = error && <div style={{color: 'red'}}>Title is required</div>*/
-
-
     const addTask = () => {
         const trimmedTitle = title.trim()
         if (trimmedTitle) {
@@ -53,14 +47,6 @@ export const AddItemForm = (props: AddItemFormType) => {
                 error={error}
                 helperText={error && 'Title is required'}
             />
-{/*            <input
-                className={error ? 'error' : ''}
-                value={title}
-                placeholder={'enter task'}
-                onChange={changeTitle}
-                onKeyPress={onKeyPressAddTask}
-            />*/}
-            {/*<button onClick={addTask}>+</button>*/}
             <IconButton onClick={addTask} size={'small'}>
                 <Add/>
             </IconButton>
