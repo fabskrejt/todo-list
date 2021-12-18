@@ -117,14 +117,6 @@ function App() {
         )
     })
 
-    /* let tasksForRender = tasks
-     if (filter === 'active') {
-         tasksForRender = tasks.filter(t => t.isDone === false)
-     }
-     if (filter === 'completed') {
-         tasksForRender = tasks.filter(t => t.isDone === true)
-     }*/
-
     return (
 
         <div className="App">
@@ -147,12 +139,8 @@ function App() {
                     {todoListsComponents}
                 </Grid>
             </Container>
-            {/* <TodoList changeTaskStatus={changeTaskStatus} filter={filter} title='What to learn' addTask={addTask}
-                      tasks={tasksForRender} removeTask={removeTask}
-                      changeFilter={changeFilter}/>*/}
         </div>
     );
 }
-
 
 export default App;

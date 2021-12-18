@@ -143,9 +143,7 @@ function AppWithReducer() {
             </Grid>
         )
     })
-
     return (
-
         <div className="App">
             <AppBar position={'static'}>
                 <Toolbar style={{justifyContent: 'space-between'}}>
