@@ -22,11 +22,22 @@ type TodoListPropsType = {
 
 const TodoList = React.memo((props: TodoListPropsType) => {
     console.log('todolist')
-    const todoListItem = props.tasks.map(t => {
+
+    let tasksForRender = props.tasks
+    if (props.filter === 'active') {
+        tasksForRender = props.tasks.filter(t => !t.isDone)
+    }
+    if (props.filter === 'completed') {
+        tasksForRender = props.tasks.filter(t => t.isDone)
+    }
+
+
+    const todoListItem = tasksForRender.map(t => {
         const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked, props.id)
         const setNewTaskTitle = (title: string) => {
             props.changeTaskTitle(t.id, title, props.id)
         }
+
 
         return (
             <ListItem
