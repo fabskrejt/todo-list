@@ -20,7 +20,8 @@ type TodoListPropsType = {
     changeTodoListTitle: (title: string, todoListID: string) => void
 }
 
-const TodoList = (props: TodoListPropsType) => {
+const TodoList = React.memo((props: TodoListPropsType) => {
+    console.log('todolist')
     const todoListItem = props.tasks.map(t => {
         const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked, props.id)
         const setNewTaskTitle = (title: string) => {
@@ -100,6 +101,6 @@ const TodoList = (props: TodoListPropsType) => {
             </div>
         </div>
     )
-}
+})
 
 export default TodoList

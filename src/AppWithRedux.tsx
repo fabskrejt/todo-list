@@ -34,35 +34,35 @@ function AppWithRedux() {
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
     const dispatch = useDispatch()
 
-    const removeTask = (taskID: string, todoListID: string) => {
+    const removeTask = useCallback((taskID: string, todoListID: string) => {
 
         let action = removeTaskAC(taskID, todoListID)
         dispatch(action)
 
-    }
-    const addTask = (title: string, todoListID: string) => {
+    },[ dispatch])
+    const addTask =useCallback( (title: string, todoListID: string) => {
         dispatch(addTaskAC(title, todoListID))
-    }
-    const changeTodoListTitle = (title: string, todoListID: string) => {
+    },[dispatch])
+    const changeTodoListTitle = useCallback((title: string, todoListID: string) => {
         dispatch(ChangeTodoListTitleAC(title, todoListID))
-    }
-    const changeTaskStatus = (taskID: string, isDone: boolean, todoListID: string) => {
+    },[dispatch])
+    const changeTaskStatus = useCallback((taskID: string, isDone: boolean, todoListID: string) => {
         dispatch(changeTaskStatusAC(taskID, isDone, todoListID))
-    }
-    const changeFilter = (filter: FilterValuesType, todoListID: string) => {
+    },[dispatch])
+    const changeFilter = useCallback((filter: FilterValuesType, todoListID: string) => {
         dispatch(ChangeTodoListFilterAC(filter, todoListID))
-    }
-    const changeTaskTitle = (taskID: string, taskTitle: string, todoListID: string) => {
+    },[dispatch])
+    const changeTaskTitle = useCallback((taskID: string, taskTitle: string, todoListID: string) => {
         dispatch(changeTaskTitleAC(taskID, taskTitle, todoListID))
-    }
-    const removeTodoList = (todoListID: string) => {
+    },[dispatch])
+    const removeTodoList = useCallback((todoListID: string) => {
         let action = RemoveTodolistAC(todoListID)
         dispatch(action)
-    }
+    },[dispatch])
     const addTodoList = useCallback((title: string) => {
         let action = AddTodolistAC(title)
         dispatch(action)
-    },[])
+    },[dispatch])
 
 
 //UI
