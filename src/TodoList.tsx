@@ -67,7 +67,7 @@ const TodoList = React.memo((props: TodoListPropsType) => {
 
     const addTask = useCallback((trimmedTitle: string) => {
         props.addTask(trimmedTitle, props.id)
-    },[props.addTask, props.id])
+    }, [props.addTask, props.id])
     const changeFilterToAll = () => props.changeFilter('all', props.id)
     const changeFilterToActive = () => props.changeFilter('active', props.id)
     const changeFilterToCompleted = () => props.changeFilter('completed', props.id)
