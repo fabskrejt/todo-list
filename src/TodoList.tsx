@@ -21,7 +21,6 @@ type TodoListPropsType = {
 }
 
 const TodoList = React.memo((props: TodoListPropsType) => {
-    console.log('todolist')
 
     let tasksForRender = props.tasks
     if (props.filter === 'active') {

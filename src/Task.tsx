@@ -12,8 +12,7 @@ type TaskPropsType ={
     todolistId: string
 }
 export const Task = React.memo(({task,removeTask,changeTaskStatus,changeTaskTitle,todolistId}: TaskPropsType)=>{
-    console.log('TaskComponent')
-    const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => changeTaskStatus(task.id, e.currentTarget.checked, todolistId)
+    const changeInputCheck = useCallback((e: ChangeEvent<HTMLInputElement>) => changeTaskStatus(task.id, e.currentTarget.checked, todolistId),[task.id,])
     const setNewTaskTitle = useCallback((title: string) => {
         changeTaskTitle(task.id, title, todolistId)
     },[task.id, todolistId])
