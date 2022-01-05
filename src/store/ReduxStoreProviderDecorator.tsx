@@ -4,7 +4,6 @@ import {tasksReducer} from "./tasks-reducer";
 import {todolistsReducer} from "./todolist-reducer";
 import {AppRootStateType} from "./store";
 import {Provider} from "react-redux";
-import {v1} from "uuid";
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,
@@ -18,12 +17,12 @@ const initialGlobalState = {
     ] ,
     tasks: {
         ["todolistId1"]: [
-            {id: '1', title: "HTML&CSS", isDone: true},
+            {id: '1', title: "HTML&CSS", isDone: false},
             {id: '2', title: "JS", isDone: true}
         ],
         ["todolistId2"]: [
             {id: '11', title: "Milk", isDone: true},
-            {id: '11', title: "React Book", isDone: true}
+            {id: '21', title: "React Book", isDone: false}
         ]
     }
 };

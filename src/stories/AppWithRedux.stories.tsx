@@ -9,13 +9,13 @@ import {store} from "../store/store";
 export default {
   title: 'TODOLIST/AppWithRedux',
   component: AppWithRedux,
- // decorators: [ReduxStoreProviderDecorator]
+ decorators: [ReduxStoreProviderDecorator]
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 } as ComponentMeta<typeof AppWithRedux>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 //ts-ignore
-const Template: ComponentStory<typeof AppWithRedux> = (args) => <Provider store={store}> <AppWithRedux /></Provider>;
+const Template: ComponentStory<typeof AppWithRedux> = (args) => <AppWithRedux />;
 
 export const AppWithReduxStory = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
