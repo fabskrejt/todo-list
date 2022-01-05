@@ -4,6 +4,7 @@ import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
 import {Button, ButtonGroup, Checkbox, IconButton, List, ListItem, Typography} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
+import {Task} from "./Task";
 
 
 type TodoListPropsType = {
@@ -33,36 +34,10 @@ const TodoList = React.memo((props: TodoListPropsType) => {
 
 
     const todoListItem = tasksForRender.map(t => {
-        const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked, props.id)
-        const setNewTaskTitle = (title: string) => {
-            props.changeTaskTitle(t.id, title, props.id)
-        }
-
-
-        return (
-            <ListItem
-                divider
-                alignItems={'center'}
-                dense
-                className={t.isDone ? 'is-done' : ''}
-                key={t.id}
-                style={{display: 'flex', justifyContent: 'space-between'}}
-            >
-                <div>
-                    <Checkbox
-                        onChange={changeInputCheck}
-                        checked={t.isDone}
-                        color="default"
-
-                    />
-                    <EditableSpan title={t.title} setNewTitle={setNewTaskTitle}/>
-                </div>
-                <IconButton onClick={() => props.removeTask(t.id, props.id)}>
-                    <Delete/>
-                </IconButton>
-                {/*              <button onClick={() => props.removeTask(t.id, props.id)}> x</button>*/}
-            </ListItem>
-        )
+        return  <Task task={t} removeTask={props.removeTask}
+                      changeTaskStatus={props.changeTaskStatus}
+                      changeTaskTitle={props.changeTaskTitle}
+                      todolistId={props.id}/>
     })
 
     const addTask = useCallback((trimmedTitle: string) => {

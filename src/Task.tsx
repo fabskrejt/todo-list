@@ -9,14 +9,14 @@ type TaskPropsType ={
     removeTask: (taskID: string, todoListID: string) => void
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
     changeTaskTitle: (taskID: string, taskTitle: string, todoListID: string) => void
+    todolistId: string
 
 }
-/*
 export const Task = React.memo((props: TaskPropsType)=>{
 
-    const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(t.id, e.currentTarget.checked, props.id)
+    const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.task.id, e.currentTarget.checked, props.todolistId)
     const setNewTaskTitle = (title: string) => {
-        props.changeTaskTitle(t.id, title, props.id)
+        props.changeTaskTitle(props.task.id, title, props.todolistId)
     }
 
 
@@ -25,23 +25,23 @@ export const Task = React.memo((props: TaskPropsType)=>{
             divider
             alignItems={'center'}
             dense
-            className={t.isDone ? 'is-done' : ''}
-            key={t.id}
+            className={props.task.isDone ? 'is-done' : ''}
+            key={props.task.id}
             style={{display: 'flex', justifyContent: 'space-between'}}
         >
             <div>
                 <Checkbox
                     onChange={changeInputCheck}
-                    checked={t.isDone}
+                    checked={props.task.isDone}
                     color="default"
 
                 />
-                <EditableSpan title={t.title} setNewTitle={setNewTaskTitle}/>
+                <EditableSpan title={props.task.title} setNewTitle={setNewTaskTitle}/>
             </div>
-            <IconButton onClick={() => props.removeTask(t.id, props.id)}>
+            <IconButton onClick={() => props.removeTask(props.task.id, props.todolistId)}>
                 <Delete/>
             </IconButton>
-            {/!*              <button onClick={() => props.removeTask(t.id, props.id)}> x</button>*!/}
+            {/*              <button onClick={() => props.removeTask(t.id, props.id)}> x</button>*/}
         </ListItem>
     )
-})*/
+})
