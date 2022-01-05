@@ -6,7 +6,6 @@ import {Button, ButtonGroup, Checkbox, IconButton, List, ListItem, Typography} f
 import {Delete} from "@material-ui/icons";
 import {Task} from "./Task";
 
-
 type TodoListPropsType = {
     id: string
     title: string
@@ -34,24 +33,27 @@ const TodoList = React.memo((props: TodoListPropsType) => {
 
 
     const todoListItem = tasksForRender.map(t => {
-        return <Task task={t} removeTask={props.removeTask}
+        return <Task task={t}
+                     removeTask={props.removeTask}
                      changeTaskStatus={props.changeTaskStatus}
                      changeTaskTitle={props.changeTaskTitle}
-                     todolistId={props.id}/>
+                     todolistId={props.id}
+                     key={t.id}
+        />
     })
 
     const addTask = useCallback((trimmedTitle: string) => {
         props.addTask(trimmedTitle, props.id)
     }, [props.addTask, props.id])
-    const changeFilterToAll = () => props.changeFilter('all', props.id)
-    const changeFilterToActive = () => props.changeFilter('active', props.id)
-    const changeFilterToCompleted = () => props.changeFilter('completed', props.id)
+    const changeFilterToAll = useCallback(() => props.changeFilter('all', props.id), [props.changeFilter, props.id])
+    const changeFilterToActive = useCallback(() => props.changeFilter('active', props.id), [props.changeFilter, props.id])
+    const changeFilterToCompleted = useCallback(() => props.changeFilter('completed', props.id), [props.changeFilter, props.id])
     const allButtonClass = props.filter === 'all' ? 'active-filter' : ''
     const activeButtonClass = props.filter === 'active' ? 'active-filter' : ''
     const completedButtonClass = props.filter === 'completed' ? 'active-filter' : ''
-    const setNewTodolistTitle = (title: string) => {
+    const setNewTodolistTitle = useCallback((title: string) => {
         props.changeTodoListTitle(title, props.id)
-    }
+    }, [props.changeTodoListTitle, props.id])
 
     return (
         <div className='todolist'>

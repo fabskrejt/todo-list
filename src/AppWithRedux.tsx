@@ -30,8 +30,8 @@ export type  FilterValuesType = 'all' | 'active' | 'completed'
 function AppWithRedux() {
 
     const todoLists = useSelector<AppRootStateType, Array<TodoListType>>(state => state.todolists)
-
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+
     const dispatch = useDispatch()
 
     const removeTask = useCallback((taskID: string, todoListID: string) => {
