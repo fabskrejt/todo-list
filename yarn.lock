@@ -9071,7 +9071,7 @@ jest-haste-map@^27.4.5:
 
 jest-image-snapshot@^4.5.1:
   version "4.5.1"
-  resolved "https://registry.npmjs.org/jest-image-snapshot/-/jest-image-snapshot-4.5.1.tgz"
+  resolved "https://registry.yarnpkg.com/jest-image-snapshot/-/jest-image-snapshot-4.5.1.tgz#79fe0419c7729eb1be6c873365307a7b60f5cda0"
   integrity sha512-0YkgupgkkCx0wIZkxvqs/oNiUT0X0d2WTpUhaAp+Dy6CpqBUZMRTIZo4KR1f+dqmx6WXrLCvecjnHLIsLkI+gQ==
   dependencies:
     chalk "^1.1.3"
@@ -9156,7 +9156,7 @@ jest-pnp-resolver@^1.2.2:
 
 jest-puppeteer@^6.0.3:
   version "6.0.3"
-  resolved "https://registry.npmjs.org/jest-puppeteer/-/jest-puppeteer-6.0.3.tgz"
+  resolved "https://registry.yarnpkg.com/jest-puppeteer/-/jest-puppeteer-6.0.3.tgz#fa13f9eaaf202f3fb961bd7a3b097a6b4e9b90ff"
   integrity sha512-6GRdbkWwNu8dfzo4icpwc50+K5ECYpWyD9sxpRa03PA8Hi3byl0dcAx+NjCivSezWjAl2Iwwhujqb+bczei0Bg==
   dependencies:
     expect-puppeteer "^6.0.2"
@@ -11931,7 +11931,7 @@ punycode@^2.1.0, punycode@^2.1.1:
 
 puppeteer@^13.0.1:
   version "13.0.1"
-  resolved "https://registry.npmjs.org/puppeteer/-/puppeteer-13.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-13.0.1.tgz#9cd9bb8ec090bade183ca186bf342396bdffa135"
   integrity sha512-wqGIx59LzYqWhYcJQphMT+ux0sgatEUbjKG0lbjJxNVqVIT3ZC5m4Bvmq2gHE3qhb63EwS+rNkql08bm4BvO0A==
   dependencies:
     debug "4.3.2"
@@ -13384,7 +13384,7 @@ stackframe@^1.1.1:
 
 start-server-and-test@^1.14.0:
   version "1.14.0"
-  resolved "https://registry.npmjs.org/start-server-and-test/-/start-server-and-test-1.14.0.tgz"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.14.0.tgz#c57f04f73eac15dd51733b551d775b40837fdde3"
   integrity sha512-on5ELuxO2K0t8EmNj9MtVlFqwBMxfWOhu4U7uZD1xccVpFlOQKR93CSe0u98iQzfNxRyaNTb/CdadbNllplTsw==
   dependencies:
     bluebird "3.7.2"
