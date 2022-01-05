@@ -12,36 +12,33 @@ type TaskPropsType ={
     todolistId: string
 
 }
-export const Task = React.memo((props: TaskPropsType)=>{
+export const Task = React.memo(({task,removeTask,changeTaskStatus,changeTaskTitle,todolistId}: TaskPropsType)=>{
 
-    const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.task.id, e.currentTarget.checked, props.todolistId)
+    const changeInputCheck = (e: ChangeEvent<HTMLInputElement>) => changeTaskStatus(task.id, e.currentTarget.checked, todolistId)
     const setNewTaskTitle = (title: string) => {
-        props.changeTaskTitle(props.task.id, title, props.todolistId)
+        changeTaskTitle(task.id, title, todolistId)
     }
-
 
     return (
         <ListItem
             divider
             alignItems={'center'}
             dense
-            className={props.task.isDone ? 'is-done' : ''}
-            key={props.task.id}
+            className={task.isDone ? 'is-done' : ''}
+            key={task.id}
             style={{display: 'flex', justifyContent: 'space-between'}}
         >
             <div>
                 <Checkbox
                     onChange={changeInputCheck}
-                    checked={props.task.isDone}
+                    checked={task.isDone}
                     color="default"
-
                 />
-                <EditableSpan title={props.task.title} setNewTitle={setNewTaskTitle}/>
+                <EditableSpan title={task.title} setNewTitle={setNewTaskTitle}/>
             </div>
-            <IconButton onClick={() => props.removeTask(props.task.id, props.todolistId)}>
+            <IconButton onClick={() => removeTask(task.id, todolistId)}>
                 <Delete/>
             </IconButton>
-            {/*              <button onClick={() => props.removeTask(t.id, props.id)}> x</button>*/}
         </ListItem>
     )
 })

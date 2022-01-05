@@ -34,10 +34,10 @@ const TodoList = React.memo((props: TodoListPropsType) => {
 
 
     const todoListItem = tasksForRender.map(t => {
-        return  <Task task={t} removeTask={props.removeTask}
-                      changeTaskStatus={props.changeTaskStatus}
-                      changeTaskTitle={props.changeTaskTitle}
-                      todolistId={props.id}/>
+        return <Task task={t} removeTask={props.removeTask}
+                     changeTaskStatus={props.changeTaskStatus}
+                     changeTaskTitle={props.changeTaskTitle}
+                     todolistId={props.id}/>
     })
 
     const addTask = useCallback((trimmedTitle: string) => {
